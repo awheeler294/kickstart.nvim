@@ -296,7 +296,6 @@ require('lazy').setup({
   --
   -- For example, in the following configuration, we use:
   --  event = 'VimEnter'
-  --
   -- which loads which-key before all the UI elements are loaded. Events can be
   -- normal autocommands events (`:help autocmd-events`).
   --
@@ -381,6 +380,18 @@ require('lazy').setup({
       -- This opens a window that shows you all of the keymaps for the current
       -- Telescope picker. This is really useful to discover what Telescope can
       -- do as well as how to actually do it!
+      --  Whitespace
+      vim.o.expandtab = true -- bool: Use spaces instead of tabs
+      vim.o.shiftwidth = 3 -- num:  Size of an indent
+      vim.o.softtabstop = 3 -- num:  Number of spaces tabs count for in insert mode
+      vim.o.tabstop = 3 -- num:  Number of spaces tabs count for
+
+      vim.o.scrolloff = 5 -- int:  Min num lines of context
+      vim.o.colorcolumn = '81' -- str:  Show col for max line length
+      vim.o.cursorline = true -- bool: highlight line the cursor is on
+
+      -- hide the default mode display, eg --Insert--
+      vim.o.showmode = false
 
       -- [[ Configure Telescope ]]
       -- See `:help telescope` and `:help telescope.setup()`
@@ -603,13 +614,56 @@ require('lazy').setup({
         -- clangd = {},
         -- gopls = {},
         -- pyright = {},
+        pyright = {},
+        -- set up by rust-tools
         -- rust_analyzer = {},
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        -- ts_ls = {},
+        ts_ls = {},
+        html = { filetypes = { 'html', 'twig', 'hbs' } },
+
+        -- csharp_ls = {},
+        cmake = {},
+        cssls = {},
+        clojure_lsp = {},
+        dockerls = {},
+        docker_compose_language_service = {},
+        elixirls = {},
+        elmls = {},
+        -- erlangls = {},
+        htmx = {},
+        --Haskell
+        -- hls = {},
+        -- java_language_server = {},
+        -- jq
+        -- jqls = {},
+        jsonls = {},
+        kotlin_language_server = {},
+        -- LaTeX
+        ltex = {},
+        -- Make
+        -- autotools_language_server = {},
+        -- Markdown
+        marksman = {},
+        -- Nix
+        -- nil_ls = {},
+        -- PHP
+        intelephense = {},
+        powershell_es = {},
+        -- ruby_ls = {},
+        sqlls = {},
+        --TOML
+        taplo = {},
+        vimls = {},
+        --XML
+        lemminx = {},
+        --YAML
+        yamlls = {},
+        -- Zig
+        zls = {},
 
         stylua = {}, -- Used to format Lua code
 
@@ -639,6 +693,8 @@ require('lazy').setup({
           end,
           settings = {
             Lua = {},
+            -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
+            diagnostics = { disable = { 'missing-fields' } },
           },
         },
       }
@@ -816,7 +872,7 @@ require('lazy').setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'tokyonight-night'
+      vim.cmd.colorscheme 'ayu'
     end,
   },
 
@@ -940,7 +996,7 @@ require('lazy').setup({
   --    This is the easiest way to modularize your config.
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
   --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!
