@@ -152,14 +152,14 @@ require('lazy').setup({
     },
   },
 
-  {
-    -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'onedark'
-    end,
-  },
+  -- {
+  --   -- Theme inspired by Atom
+  --   'navarasu/onedark.nvim',
+  --   priority = 1000,
+  --   config = function()
+  --     vim.cmd.colorscheme 'onedark'
+  --   end,
+  -- },
 
   {
     -- Set lualine as statusline
@@ -168,7 +168,8 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'onedark',
+        -- theme = 'onedark',
+        theme = 'ayu',
         component_separators = '|',
         section_separators = '',
       },
@@ -181,7 +182,9 @@ require('lazy').setup({
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help ibl`
     main = 'ibl',
-    opts = {},
+    opts = {
+      indent = { char = "│" },
+    },
   },
 
   -- "gc" to comment visual regions/lines
@@ -229,7 +232,7 @@ require('lazy').setup({
   --    Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
 }, {})
 
 -- [[ Setting options ]]
@@ -272,6 +275,19 @@ vim.o.completeopt = 'menuone,noselect'
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
+
+--  Whitespace
+vim.o.expandtab = true             -- bool: Use spaces instead of tabs
+vim.o.shiftwidth = 3               -- num:  Size of an indent
+vim.o.softtabstop = 3              -- num:  Number of spaces tabs count for in insert mode
+vim.o.tabstop = 3                  -- num:  Number of spaces tabs count for
+
+vim.o.scrolloff = 5                -- int:  Min num lines of context
+vim.o.colorcolumn = '81'           -- str:  Show col for max line length
+vim.o.cursorline = true            -- bool: highlight line the cursor is on
+
+-- hide the default mode display, eg --Insert--
+vim.o.showmode = false
 
 -- [[ Basic Keymaps ]]
 
@@ -511,19 +527,62 @@ require('mason-lspconfig').setup()
 --  If you want to override the default filetypes that your language server will attach to you can
 --  define the property 'filetypes' to the map in question.
 local servers = {
-  -- clangd = {},
-  -- gopls = {},
-  -- pyright = {},
+  clangd = {},
+  -- Go
+  gopls = {},
+  pyright = {},
+  -- set up by rust-tools
   -- rust_analyzer = {},
-  -- tsserver = {},
-  -- html = { filetypes = { 'html', 'twig', 'hbs'} },
+  tsserver = {},
+  html = { filetypes = { 'html', 'twig', 'hbs'} },
+
+  csharp_ls = {},
+  cmake = {},
+  cssls = {},
+  clojure_lsp = {},
+  dockerls = {},
+  docker_compose_language_service = {},
+  elixirls = {},
+  elmls = {},
+  -- erlangls = {},
+  htmx = {},
+  --Haskell
+  -- hls = {},
+  -- java_language_server = {},
+  -- jq
+  jqls = {},
+  jsonls = {},
+  kotlin_language_server = {},
+  -- LaTeX
+  ltex = {},
+  -- Make
+  -- autotools_language_server = {},
+  -- Markdown
+  marksman = {},
+  -- Nix
+  -- nil_ls = {},
+  -- PHP
+  intelephense = {},
+  powershell_es = {},
+  -- ruby_ls = {},
+  sqlls = {},
+  --TOML
+  taplo = {},
+  vimls = {},
+  --XML
+  lemminx = {},
+  --YAML
+  yamlls = {},
+  -- Zig
+  zls = {},
+
 
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
       telemetry = { enable = false },
       -- NOTE: toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-      -- diagnostics = { disable = { 'missing-fields' } },
+      diagnostics = { disable = { 'missing-fields' } },
     },
   },
 }
