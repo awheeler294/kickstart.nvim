@@ -81,6 +81,20 @@ return {
     local dap = require 'dap'
     local dapui = require 'dapui'
 
+    dap.adapters.codelldb = {
+      type = 'server',
+      port = "${port}",
+      executable = {
+        -- CHANGE THIS to your path!
+        -- command = '/absolute/path/to/codelldb/extension/adapter/codelldb',
+        command = '/home/andrew/.config/nvim-kickstart/codelldb/extension/adapter/codelldb',
+        args = {"--port", "${port}"},
+
+        -- On windows you may have to uncomment this:
+        -- detached = false,
+      }
+    }
+
     require('mason-nvim-dap').setup {
       -- Makes a best effort to setup the various debuggers with
       -- reasonable debug configurations

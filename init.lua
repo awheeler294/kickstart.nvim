@@ -283,7 +283,16 @@ require('lazy').setup({
       },
     },
   },
-
+  
+  -- {
+  --   -- Theme inspired by Atom
+  --   'navarasu/onedark.nvim',
+  --   priority = 1000,
+  --   config = function()
+  --     vim.cmd.colorscheme 'onedark'
+  --   end,
+  -- },
+  
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
   --
   -- This is often very useful to both group configuration, as well as handle
@@ -291,7 +300,6 @@ require('lazy').setup({
   --
   -- For example, in the following configuration, we use:
   --  event = 'VimEnter'
-  --
   -- which loads which-key before all the UI elements are loaded. Events can be
   -- normal autocommands events (`:help autocmd-events`).
   --
@@ -400,6 +408,19 @@ require('lazy').setup({
       -- This opens a window that shows you all of the keymaps for the current
       -- Telescope picker. This is really useful to discover what Telescope can
       -- do as well as how to actually do it!
+--  Whitespace
+vim.o.expandtab = true             -- bool: Use spaces instead of tabs
+vim.o.shiftwidth = 3               -- num:  Size of an indent
+vim.o.softtabstop = 3              -- num:  Number of spaces tabs count for in insert mode
+vim.o.tabstop = 3                  -- num:  Number of spaces tabs count for
+
+vim.o.scrolloff = 5                -- int:  Min num lines of context
+vim.o.colorcolumn = '81'           -- str:  Show col for max line length
+vim.o.cursorline = true            -- bool: highlight line the cursor is on
+
+-- hide the default mode display, eg --Insert--
+vim.o.showmode = false
+
 
       -- [[ Configure Telescope ]]
       -- See `:help telescope` and `:help telescope.setup()`
@@ -674,6 +695,8 @@ require('lazy').setup({
         -- clangd = {},
         -- gopls = {},
         -- pyright = {},
+  pyright = {},
+  -- set up by rust-tools
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -683,6 +706,49 @@ require('lazy').setup({
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         -- ts_ls = {},
         --
+  tsserver = {},
+  html = { filetypes = { 'html', 'twig', 'hbs'} },
+
+  csharp_ls = {},
+  cmake = {},
+  cssls = {},
+  clojure_lsp = {},
+  dockerls = {},
+  docker_compose_language_service = {},
+  elixirls = {},
+  elmls = {},
+  -- erlangls = {},
+  htmx = {},
+  --Haskell
+  -- hls = {},
+  -- java_language_server = {},
+  -- jq
+  jqls = {},
+  jsonls = {},
+  kotlin_language_server = {},
+  -- LaTeX
+  ltex = {},
+  -- Make
+  -- autotools_language_server = {},
+  -- Markdown
+  marksman = {},
+  -- Nix
+  -- nil_ls = {},
+  -- PHP
+  intelephense = {},
+  powershell_es = {},
+  -- ruby_ls = {},
+  sqlls = {},
+  --TOML
+  taplo = {},
+  vimls = {},
+  --XML
+  lemminx = {},
+  --YAML
+  yamlls = {},
+  -- Zig
+  zls = {},
+
 
         lua_ls = {
           -- cmd = { ... },
@@ -694,7 +760,7 @@ require('lazy').setup({
                 callSnippet = 'Replace',
               },
               -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-              -- diagnostics = { disable = { 'missing-fields' } },
+              diagnostics = { disable = { 'missing-fields' } },
             },
           },
         },
