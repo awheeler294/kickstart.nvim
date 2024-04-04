@@ -408,6 +408,9 @@ require('lazy').setup({
       -- This opens a window that shows you all of the keymaps for the current
       -- Telescope picker. This is really useful to discover what Telescope can
       -- do as well as how to actually do it!
+-- when wrapping, break line at wors boundaries
+vim.o.linebreak = true
+
 --  Whitespace
 vim.o.expandtab = true             -- bool: Use spaces instead of tabs
 vim.o.shiftwidth = 3               -- num:  Size of an indent
