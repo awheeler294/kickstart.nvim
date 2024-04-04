@@ -380,11 +380,11 @@ require('lazy').setup({
       -- This opens a window that shows you all of the keymaps for the current
       -- Telescope picker. This is really useful to discover what Telescope can
       -- do as well as how to actually do it!
-      --  Whitespace
-      vim.o.expandtab = true -- bool: Use spaces instead of tabs
-      vim.o.shiftwidth = 3 -- num:  Size of an indent
-      vim.o.softtabstop = 3 -- num:  Number of spaces tabs count for in insert mode
-      vim.o.tabstop = 3 -- num:  Number of spaces tabs count for
+--  Whitespace
+vim.o.expandtab = true  -- bool: Use spaces instead of tabs
+vim.o.shiftwidth = 3    -- num:  Size of an indent
+vim.o.softtabstop = 3   -- num:  Number of spaces tabs count for in insert mode
+vim.o.tabstop = 3       -- num:  Number of spaces tabs count for
 
       vim.o.scrolloff = 5 -- int:  Min num lines of context
       vim.o.colorcolumn = '81' -- str:  Show col for max line length
