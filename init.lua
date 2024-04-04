@@ -295,6 +295,9 @@ vim.o.clipboard = 'unnamedplus'
 -- Enable break indent
 vim.o.breakindent = true
 
+-- when wrapping, break line at wors boundaries
+vim.o.linebreak = true
+
 -- Save undo history
 vim.o.undofile = true
 
