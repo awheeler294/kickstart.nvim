@@ -159,12 +159,32 @@ vim.o.inccommand = 'split'
 vim.o.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
+<<<<<<< HEAD
 vim.o.scrolloff = 10
 
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
 vim.o.confirm = true
+=======
+-- vim.opt.scrolloff = 10
+
+-- when wrapping, break line at word boundaries
+vim.opt.linebreak = true
+
+--  Whitespace
+vim.opt.expandtab = true -- bool: Use spaces instead of tabs
+vim.opt.shiftwidth = 3 -- num:  Size of an indent
+vim.opt.softtabstop = 3 -- num:  Number of spaces tabs count for in insert mode
+vim.opt.tabstop = 3 -- num:  Number of spaces tabs count for
+
+vim.opt.scrolloff = 5 -- int:  Min num lines of context
+vim.opt.colorcolumn = '81' -- str:  Show col for max line length
+vim.opt.cursorline = true -- bool: highlight line the cursor is on
+
+-- hide the default mode display, eg --Insert--
+vim.opt.showmode = false
+>>>>>>> e1cb71d (changes)
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -283,16 +303,7 @@ require('lazy').setup({
       },
     },
   },
-  
-  -- {
-  --   -- Theme inspired by Atom
-  --   'navarasu/onedark.nvim',
-  --   priority = 1000,
-  --   config = function()
-  --     vim.cmd.colorscheme 'onedark'
-  --   end,
-  -- },
-  
+
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
   --
   -- This is often very useful to both group configuration, as well as handle
@@ -408,22 +419,6 @@ require('lazy').setup({
       -- This opens a window that shows you all of the keymaps for the current
       -- Telescope picker. This is really useful to discover what Telescope can
       -- do as well as how to actually do it!
--- when wrapping, break line at wors boundaries
-vim.o.linebreak = true
-
---  Whitespace
-vim.o.expandtab = true             -- bool: Use spaces instead of tabs
-vim.o.shiftwidth = 3               -- num:  Size of an indent
-vim.o.softtabstop = 3              -- num:  Number of spaces tabs count for in insert mode
-vim.o.tabstop = 3                  -- num:  Number of spaces tabs count for
-
-vim.o.scrolloff = 5                -- int:  Min num lines of context
-vim.o.colorcolumn = '81'           -- str:  Show col for max line length
-vim.o.cursorline = true            -- bool: highlight line the cursor is on
-
--- hide the default mode display, eg --Insert--
-vim.o.showmode = false
-
 
       -- [[ Configure Telescope ]]
       -- See `:help telescope` and `:help telescope.setup()`
@@ -695,63 +690,59 @@ vim.o.showmode = false
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        -- clangd = {},
+        clangd = {},
         -- gopls = {},
-        -- pyright = {},
-  pyright = {},
-  -- set up by rust-tools
-        -- rust_analyzer = {},
+        pyright = {},
+        rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        -- ts_ls = {},
-        --
-  tsserver = {},
-  html = { filetypes = { 'html', 'twig', 'hbs'} },
+        ts_ls = {},
 
-  csharp_ls = {},
-  cmake = {},
-  cssls = {},
-  clojure_lsp = {},
-  dockerls = {},
-  docker_compose_language_service = {},
-  elixirls = {},
-  elmls = {},
-  -- erlangls = {},
-  htmx = {},
-  --Haskell
-  -- hls = {},
-  -- java_language_server = {},
-  -- jq
-  jqls = {},
-  jsonls = {},
-  kotlin_language_server = {},
-  -- LaTeX
-  ltex = {},
-  -- Make
-  -- autotools_language_server = {},
-  -- Markdown
-  marksman = {},
-  -- Nix
-  -- nil_ls = {},
-  -- PHP
-  intelephense = {},
-  powershell_es = {},
-  -- ruby_ls = {},
-  sqlls = {},
-  --TOML
-  taplo = {},
-  vimls = {},
-  --XML
-  lemminx = {},
-  --YAML
-  yamlls = {},
-  -- Zig
-  zls = {},
+        html = { filetypes = { 'html', 'twig', 'hbs' } },
 
+        -- csharp_ls = {},
+        -- cmake = {},
+        cssls = {},
+        -- clojure_lsp = {},
+        dockerls = {},
+        docker_compose_language_service = {},
+        -- elixirls = {},
+        -- elmls = {},
+        -- erlangls = {},
+        htmx = {},
+        --Haskell
+        -- hls = {},
+        -- java_language_server = {},
+        -- jq
+        jqls = {},
+        -- jsonls = {},
+        -- kotlin_language_server = {},
+        -- LaTeX
+        -- ltex = {},
+        -- Make
+        -- autotools_language_server = {},
+        -- Markdown
+        marksman = {},
+        -- Nix
+        nil_ls = {},
+        -- PHP
+        -- intelephense = {},
+        powershell_es = {},
+        -- ruby_ls = {},
+        -- sqlls = {},
+        --TOML
+        -- taplo = {},
+        -- vimls = {},
+        --XML
+        -- lemminx = {},
+        --YAML
+        -- yamlls = {},
+        -- Zig
+        -- zls = {},
 
         lua_ls = {
           -- cmd = { ... },
@@ -950,7 +941,7 @@ vim.o.showmode = false
     -- change the command in the config to whatever the name of that colorscheme is.
     --
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-    'folke/tokyonight.nvim',
+    'Shatur/neovim-ayu',
     priority = 1000, -- Make sure to load this before all the other start plugins.
     config = function()
       ---@diagnostic disable-next-line: missing-fields
@@ -963,7 +954,30 @@ vim.o.showmode = false
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
+<<<<<<< HEAD
       vim.cmd.colorscheme 'tokyonight-night'
+=======
+
+      local colors = require 'ayu.colors'
+      colors.generate(true) -- Pass `true` to enable mirage
+
+      require('ayu').setup {
+        mirage = true,
+
+        overrides = {
+          NormalFloat = { bg = colors.panel_bg },
+          WhichKeyFloat = { bg = colors.panel_bg },
+          FloatBorder = { bg = colors.panel_border },
+          FloatShadow = { bg = colors.panel_shadow },
+        },
+      }
+
+      require('ayu').colorscheme()
+      -- vim.cmd.colorscheme 'tokyonight-night'
+
+      -- You can configure highlights by doing something like:
+      vim.cmd.hi 'Comment gui=none'
+>>>>>>> e1cb71d (changes)
     end,
   },
 
@@ -1042,23 +1056,28 @@ vim.o.showmode = false
   --  Here are some example plugins that I've included in the Kickstart repository.
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
-  -- require 'kickstart.plugins.debug',
-  -- require 'kickstart.plugins.indent_line',
-  -- require 'kickstart.plugins.lint',
-  -- require 'kickstart.plugins.autopairs',
-  -- require 'kickstart.plugins.neo-tree',
-  -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+  require 'kickstart.plugins.debug',
+  require 'kickstart.plugins.indent_line',
+  require 'kickstart.plugins.lint',
+  require 'kickstart.plugins.autopairs',
+  require 'kickstart.plugins.neo-tree',
+  require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
+<<<<<<< HEAD
   -- { import = 'custom.plugins' },
   --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!
   -- In normal mode type `<space>sh` then write `lazy.nvim-plugin`
   -- you can continue same window with `<space>sr` which resumes last telescope search
+=======
+  --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
+  { import = 'custom.plugins' },
+>>>>>>> e1cb71d (changes)
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
