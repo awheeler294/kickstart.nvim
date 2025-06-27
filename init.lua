@@ -380,18 +380,22 @@ require('lazy').setup({
       -- This opens a window that shows you all of the keymaps for the current
       -- Telescope picker. This is really useful to discover what Telescope can
       -- do as well as how to actually do it!
+-- when wrapping, break line at wors boundaries
+vim.o.linebreak = true
+
 --  Whitespace
-vim.o.expandtab = true  -- bool: Use spaces instead of tabs
-vim.o.shiftwidth = 3    -- num:  Size of an indent
-vim.o.softtabstop = 3   -- num:  Number of spaces tabs count for in insert mode
-vim.o.tabstop = 3       -- num:  Number of spaces tabs count for
+vim.o.expandtab = true    -- bool: Use spaces instead of tabs
+vim.o.shiftwidth = 3      -- num:  Size of an indent
+vim.o.softtabstop = 3     -- num:  Number of spaces tabs count for in insert mode
+vim.o.tabstop = 3         -- num:  Number of spaces tabs count for
 
-      vim.o.scrolloff = 5 -- int:  Min num lines of context
-      vim.o.colorcolumn = '81' -- str:  Show col for max line length
-      vim.o.cursorline = true -- bool: highlight line the cursor is on
+vim.o.scrolloff = 5       -- int:  Min num lines of context
+vim.o.colorcolumn = '81'  -- str:  Show col for max line length
+vim.o.cursorline = true   -- bool: highlight line the cursor is on
 
-      -- hide the default mode display, eg --Insert--
-      vim.o.showmode = false
+-- hide the default mode display, eg --Insert--
+vim.o.showmode = false
+
 
       -- [[ Configure Telescope ]]
       -- See `:help telescope` and `:help telescope.setup()`
@@ -611,12 +615,13 @@ vim.o.tabstop = 3       -- num:  Number of spaces tabs count for
       --  See `:help lsp-config` for information about keys and how to configure
       ---@type table<string, vim.lsp.Config>
       local servers = {
-        -- clangd = {},
+        clangd = {},
         -- gopls = {},
         -- pyright = {},
         pyright = {},
         -- set up by rust-tools
         -- rust_analyzer = {},
+        -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
         --    https://github.com/pmizio/typescript-tools.nvim
@@ -859,7 +864,7 @@ vim.o.tabstop = 3       -- num:  Number of spaces tabs count for
     -- change the command in the config to whatever the name of that colorscheme is.
     --
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-    'folke/tokyonight.nvim',
+    'Shatur/neovim-ayu',
     priority = 1000, -- Make sure to load this before all the other start plugins.
     config = function()
       ---@diagnostic disable-next-line: missing-fields
