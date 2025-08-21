@@ -157,15 +157,27 @@ vim.opt.inccommand = 'split'
 vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.o.scrolloff = 10
-=======
-vim.opt.scrolloff = 5
->>>>>>> 1b214e4 (updates)
+vim.o.scrolloff = 5
 
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
 vim.o.confirm = true
+
+-- when wrapping, break line at word boundaries
+vim.opt.linebreak = true
+
+--  Whitespace
+vim.opt.expandtab = true -- bool: Use spaces instead of tabs
+vim.opt.shiftwidth = 3 -- num:  Size of an indent
+vim.opt.softtabstop = 3 -- num:  Number of spaces tabs count for in insert mode
+vim.opt.tabstop = 3 -- num:  Number of spaces tabs count for
+
+vim.opt.colorcolumn = '81' -- str:  Show col for max line length
+vim.opt.cursorline = true -- bool: highlight line the cursor is on
+
+-- hide the default mode display, eg --Insert--
+vim.opt.showmode = false
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -383,22 +395,21 @@ require('lazy').setup({
       -- This opens a window that shows you all of the keymaps for the current
       -- Telescope picker. This is really useful to discover what Telescope can
       -- do as well as how to actually do it!
--- when wrapping, break line at wors boundaries
-vim.o.linebreak = true
+      -- when wrapping, break line at wors boundaries
+      vim.o.linebreak = true
 
---  Whitespace
-vim.o.expandtab = true    -- bool: Use spaces instead of tabs
-vim.o.shiftwidth = 3      -- num:  Size of an indent
-vim.o.softtabstop = 3     -- num:  Number of spaces tabs count for in insert mode
-vim.o.tabstop = 3         -- num:  Number of spaces tabs count for
+      --  Whitespace
+      vim.o.expandtab = true -- bool: Use spaces instead of tabs
+      vim.o.shiftwidth = 3 -- num:  Size of an indent
+      vim.o.softtabstop = 3 -- num:  Number of spaces tabs count for in insert mode
+      vim.o.tabstop = 3 -- num:  Number of spaces tabs count for
 
-vim.o.scrolloff = 5       -- int:  Min num lines of context
-vim.o.colorcolumn = '81'  -- str:  Show col for max line length
-vim.o.cursorline = true   -- bool: highlight line the cursor is on
+      vim.o.scrolloff = 5 -- int:  Min num lines of context
+      vim.o.colorcolumn = '81' -- str:  Show col for max line length
+      vim.o.cursorline = true -- bool: highlight line the cursor is on
 
--- hide the default mode display, eg --Insert--
-vim.o.showmode = false
-
+      -- hide the default mode display, eg --Insert--
+      vim.o.showmode = false
 
       -- [[ Configure Telescope ]]
       -- See `:help telescope` and `:help telescope.setup()`
@@ -478,7 +489,7 @@ vim.o.showmode = false
         })
       end, { desc = '[/] Fuzzily search in current buffer' })
 
-      -- It's also possible to pass additional configuration options.
+      -- It's also possigle to pass additional configuration options.
       --  See `:help telescope.builtin.live_grep()` for information about particular keys
       vim.keymap.set(
         'n',
@@ -881,6 +892,27 @@ vim.o.showmode = false
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
       vim.cmd.colorscheme 'ayu'
+      -- vim.cmd.colorscheme 'tokyonight-night'
+
+      local colors = require 'ayu.colors'
+      colors.generate(true) -- Pass `true` to enable mirage
+
+      require('ayu').setup {
+        mirage = true,
+
+        overrides = {
+          NormalFloat = { bg = colors.panel_bg },
+          WhichKeyFloat = { bg = colors.panel_bg },
+          FloatBorder = { bg = colors.panel_border },
+          FloatShadow = { bg = colors.panel_shadow },
+        },
+      }
+
+      require('ayu').colorscheme()
+      -- vim.cmd.colorscheme 'tokyonight-night'
+
+      -- You can configure highlights by doing something like:
+      vim.cmd.hi 'Comment gui=none'
     end,
   },
 
@@ -1010,7 +1042,7 @@ vim.o.showmode = false
   -- Or use telescope!
   -- In normal mode type `<space>sh` then write `lazy.nvim-plugin`
   -- you can continue same window with `<space>sr` which resumes last telescope search
-}, { ---@diagnostic disable-line: missing-fields
+}, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
     -- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
