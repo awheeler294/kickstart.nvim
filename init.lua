@@ -149,25 +149,33 @@ vim.o.splitbelow = true
 --  It is very similar to `vim.o` but offers an interface for conveniently interacting with tables.
 --   See `:help lua-options`
 --   and `:help lua-options-guide`
-vim.o.list = true
+vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
-vim.o.inccommand = 'split'
+vim.opt.inccommand = 'split'
 
 -- Show which line your cursor is on
-vim.o.cursorline = true
+vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 <<<<<<< HEAD
+<<<<<<< HEAD
 vim.o.scrolloff = 10
+=======
+vim.opt.scrolloff = 5
+>>>>>>> 1b214e4 (updates)
 
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
+<<<<<<< HEAD
 vim.o.confirm = true
 =======
 -- vim.opt.scrolloff = 10
+=======
+vim.opt.confirm = true
+>>>>>>> 1b214e4 (updates)
 
 -- when wrapping, break line at word boundaries
 vim.opt.linebreak = true
@@ -178,7 +186,6 @@ vim.opt.shiftwidth = 3 -- num:  Size of an indent
 vim.opt.softtabstop = 3 -- num:  Number of spaces tabs count for in insert mode
 vim.opt.tabstop = 3 -- num:  Number of spaces tabs count for
 
-vim.opt.scrolloff = 5 -- int:  Min num lines of context
 vim.opt.colorcolumn = '81' -- str:  Show col for max line length
 vim.opt.cursorline = true -- bool: highlight line the cursor is on
 
@@ -692,7 +699,7 @@ require('lazy').setup({
       local servers = {
         clangd = {},
         -- gopls = {},
-        pyright = {},
+        -- pyright = {},
         rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -700,16 +707,16 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        ts_ls = {},
+        -- ts_ls = {},
 
-        html = { filetypes = { 'html', 'twig', 'hbs' } },
+        -- html = { filetypes = { 'html', 'twig', 'hbs' } },
 
-        -- csharp_ls = {},
+        csharp_ls = {},
         -- cmake = {},
-        cssls = {},
+        -- cssls = {},
         -- clojure_lsp = {},
-        dockerls = {},
-        docker_compose_language_service = {},
+        -- dockerls = {},
+        -- docker_compose_language_service = {},
         -- elixirls = {},
         -- elmls = {},
         -- erlangls = {},
@@ -718,7 +725,7 @@ require('lazy').setup({
         -- hls = {},
         -- java_language_server = {},
         -- jq
-        jqls = {},
+        -- jqls = {},
         -- jsonls = {},
         -- kotlin_language_server = {},
         -- LaTeX
@@ -728,7 +735,7 @@ require('lazy').setup({
         -- Markdown
         marksman = {},
         -- Nix
-        nil_ls = {},
+        -- nil_ls = {},
         -- PHP
         -- intelephense = {},
         powershell_es = {},
