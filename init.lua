@@ -159,23 +159,12 @@ vim.opt.inccommand = 'split'
 vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-<<<<<<< HEAD
-<<<<<<< HEAD
-vim.o.scrolloff = 10
-=======
 vim.opt.scrolloff = 5
->>>>>>> 1b214e4 (updates)
 
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
-<<<<<<< HEAD
-vim.o.confirm = true
-=======
--- vim.opt.scrolloff = 10
-=======
 vim.opt.confirm = true
->>>>>>> 1b214e4 (updates)
 
 -- when wrapping, break line at word boundaries
 vim.opt.linebreak = true
@@ -191,7 +180,6 @@ vim.opt.cursorline = true -- bool: highlight line the cursor is on
 
 -- hide the default mode display, eg --Insert--
 vim.opt.showmode = false
->>>>>>> e1cb71d (changes)
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -472,7 +460,7 @@ require('lazy').setup({
         })
       end, { desc = '[/] Fuzzily search in current buffer' })
 
-      -- It's also possible to pass additional configuration options.
+      -- It's also possigle to pass additional configuration options.
       --  See `:help telescope.builtin.live_grep()` for information about particular keys
       vim.keymap.set('n', '<leader>s/', function()
         builtin.live_grep {
@@ -711,7 +699,7 @@ require('lazy').setup({
 
         -- html = { filetypes = { 'html', 'twig', 'hbs' } },
 
-        csharp_ls = {},
+        -- csharp_ls = {},
         -- cmake = {},
         -- cssls = {},
         -- clojure_lsp = {},
@@ -961,9 +949,7 @@ require('lazy').setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-<<<<<<< HEAD
-      vim.cmd.colorscheme 'tokyonight-night'
-=======
+      -- vim.cmd.colorscheme 'tokyonight-night'
 
       local colors = require 'ayu.colors'
       colors.generate(true) -- Pass `true` to enable mirage
@@ -984,7 +970,6 @@ require('lazy').setup({
 
       -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'
->>>>>>> e1cb71d (changes)
     end,
   },
 
@@ -1074,17 +1059,13 @@ require('lazy').setup({
   --    This is the easiest way to modularize your config.
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-<<<<<<< HEAD
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
   --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!
   -- In normal mode type `<space>sh` then write `lazy.nvim-plugin`
   -- you can continue same window with `<space>sr` which resumes last telescope search
-=======
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
-  { import = 'custom.plugins' },
->>>>>>> e1cb71d (changes)
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
